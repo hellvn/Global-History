@@ -97,20 +97,20 @@ export default class Post extends React.Component{
                                         <button className="search-submit"><i className="fas fa-search"/></button>
                                 </form>
                                 <div className="widget mb-50">
-                                    <h3 className="widget-title">Categories</h3>
+                                    <h3 >Tags</h3>
                                     <ul className="blog-categorie">
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Business</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Traveling</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Developement</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Motion Designer</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Content Writing</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Web Developement</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Business Strategy</a></li>
-                                        <li><a href="#"><i className="far fa-dot-circle"></i> Risk Management</a></li>
+                                        <li><a href="#">Business</a></li>
+                                        <li><a href="#">Traveling</a></li>
+                                        <li><a href="#">Developement</a></li>
+                                        <li><a href="#">Motion Designer</a></li>
+                                        <li><a href="#">Content Writing</a></li>
+                                        <li><a href="#">Web Developement</a></li>
+                                        <li><a href="#">Business Strategy</a></li>
+                                        <li><a href="#">Risk Management</a></li>
                                     </ul>
                                 </div>
                                 <div className="widget mb-50">
-                                    <h3 className="widget-title">Recent Post</h3>
+                                    <h3>Recent Post</h3>
                                     <div className="blog-recent-post">
                                         <div className="recent-single-post mb-20">
                                             <div className="post-img"> <a href="#"><img src="img/blog/recent-post/recent-post-1.jpg" alt=""/></a> </div>
@@ -131,10 +131,6 @@ export default class Post extends React.Component{
                                                 <span className="date-type">01 Jan / 2020</span> </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="widget mb-30">
-                                    <h3 className="widget-title">Tags</h3>
-                                    <div className="blog-tags"> <a href="#">Business</a> <a href="#">Traveling</a> <a href="#">Developement</a> <a href="#">Motion</a> <a href="#">Writing</a> <a href="#">Strategy</a> <a href="#">Management</a> </div>
                                 </div>
                             </aside>
                         </div>
