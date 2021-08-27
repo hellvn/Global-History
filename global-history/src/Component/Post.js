@@ -89,13 +89,7 @@ export default class Post extends React.Component{
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            
                             <aside>
-                                
-                                <form className="search-form mb-50">
-                                    <input type="text" className="form-control" placeholder="Search" value=""/>
-                                        <button className="search-submit"><i className="fas fa-search"/></button>
-                                </form>
                                 <div className="widget mb-50">
                                     <h3 >Tags</h3>
                                     <ul className="blog-categorie">

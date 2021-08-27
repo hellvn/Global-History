@@ -133,3 +133,4 @@ D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API\GlobalHistory_API\bin\
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API\GlobalHistory_API\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API\GlobalHistory_API\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API\GlobalHistory_API\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API\GlobalHistory_API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
