@@ -35,12 +35,12 @@ namespace GlobalHistory_API
             services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
-                                    builder =>
-                                    {
-                                        builder.AllowAnyOrigin()
-                                        .AllowAnyMethod()
-                                        .AllowAnyHeader();
-                                    });
+                                  builder =>
+                                  {
+                                      builder.AllowAnyOrigin()
+                                       .AllowAnyMethod()
+                                       .AllowAnyHeader();
+                                  });
             });
 
             services.AddControllers();
@@ -64,7 +64,7 @@ namespace GlobalHistory_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
