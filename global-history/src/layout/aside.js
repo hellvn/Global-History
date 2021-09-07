@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 export default class Aside extends React.Component{
     constructor(props) {
@@ -9,12 +10,11 @@ export default class Aside extends React.Component{
         }
     }
     componentDidMount(){
-        axios.get("https://localhost:44347/api/Tags")
+        axios.get("https://localhost:44361/api/Categories")
             .then(rs=>{
                 this.setState({
                     tags:rs.data
                 })
-
             })
     }
     render() {
@@ -23,12 +23,14 @@ export default class Aside extends React.Component{
             <div className="col-lg-4">
                 <aside>
                     <div className="widget mb-50">
-                        <h3>Categories</h3>
+                        <h3>Tags</h3>
                         <ul className="blog-categorie">
                             {
                                 tag.map((e,k)=>{
-                                    return(
-                                        <li key={k}><a href="#">{e.name}</a></li>
+                                    return (
+                                        <li key={k}>
+                                            <Link to={"/category/"+ e.catName}>{e.catName}</Link>
+                                        </li>
                                     )
                                 })
                             }
