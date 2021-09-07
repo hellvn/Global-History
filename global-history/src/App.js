@@ -7,6 +7,9 @@ import {BrowserRouter} from "react-router-dom";
 import Aside from "./layout/aside";
 import Header from "./Component/Header";
 import React from "react";
+import Register from "./Component/Register";
+import SignIn from "./Component/SignIn";
+
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
           <div className="App">
               <Header/>
                <Main/>
+
           </div>
       </BrowserRouter>
   );

@@ -30,6 +30,19 @@ export default class Header extends React.Component{
                         </div>
                     </div>
                 </div>
+                <div className="inner-banner inner-banner-bg pt-70 pb-40">
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-lg-8 col-md-8 mb-30">
+
+                                <div className="page-title">
+                                    <h1>Register</h1>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </header>
         )
     }
