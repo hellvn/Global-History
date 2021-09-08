@@ -6,6 +6,9 @@ import Post from "./Component/Post";
 import Aside from "./layout/aside";
 import Tags from "./Component/Tags";
 import Header from "./Component/Header";
+import Register from "./Component/Register";
+import SignIn from "./Component/SignIn";
+import PostSingle from "./Component/PostSingle";
 
 export default class Main extends React.Component{
     render() {
@@ -20,6 +23,15 @@ export default class Main extends React.Component{
                         </Route>
                         <Route path="/Category/:catName" exact>
                             <Tags/>
+                        </Route>
+                        <Route path="/register" exact>
+                            <Register/>
+                        </Route>
+                        <Route path="/login" exact>
+                            <SignIn/>
+                        </Route>
+                        <Route path="/post-single" exact>
+                            <PostSingle/>
                         </Route>
                     </div>
                 </div>

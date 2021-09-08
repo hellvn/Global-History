@@ -32,7 +32,7 @@ export default class Post extends React.Component{
                                             <h5 className="mt-10 mb-6"><a href="#" className="text-dark">{e.postTitle}</a></h5>
                                             <p className="text-muted"></p>
                                             <div className="read_more">
-                                                <Link href="#" className="text-dark text-uppercase"> Read More</Link>
+                                                <Link to="/post-single" className="text-dark text-uppercase"> Read More</Link>
                                             </div>
                                         </div>
                                     </div>

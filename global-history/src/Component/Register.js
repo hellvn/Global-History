@@ -5,11 +5,10 @@ import {Link} from "react-router-dom";
 export default class Register extends React.Component{
     render() {
         return(
-            <div className="login-register-page pt-70 pb-70">
+
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
-
                             <div className="login-box">
                                 <form className="form-style-1 shadow p-30">
                                     <p>Don't have an account? Create your account, it takes less than a minute.</p>
@@ -31,7 +30,7 @@ export default class Register extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div>
+
         )
     }
 }

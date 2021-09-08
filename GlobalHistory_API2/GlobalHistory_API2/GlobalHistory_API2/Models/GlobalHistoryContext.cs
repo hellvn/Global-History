@@ -8,7 +8,7 @@ namespace GlobalHistory_API2.Models
 {
     public partial class GlobalHistoryContext : DbContext
     {
-       /* public GlobalHistoryContext()
+       /* public GlobalHistoryContext() 
         {
         }
 */
