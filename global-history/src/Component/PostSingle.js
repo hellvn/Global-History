@@ -1,33 +1,40 @@
 import React from "react";
 import Aside from "../layout/aside";
+import axios from "axios";
+import {withRouter} from "react-router-dom";
 
-export default class PostSingle extends React.Component{
+class PostSingle extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state ={
+            post:[]
+        }
+    }
+    componentDidMount() {
+        const id =this.props.match.params.postId;
+        axios.get("https://localhost:44361/api/Posts/" + id)
+            .then(rs=>{
+                const data = rs.data;
+                this.setState({
+                    post:data
+                })
+            })
+    }
     render() {
+        const post = this.state.post;
         return(
             <div className="blog-single-page">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="blog-box">
-                                <div className="blog_img mb-20"><img src="img/blog/blog-1.jpg" alt=""/></div>
+                                <div className="blog_img mb-20"><img src={post.postImage} alt=""/></div>
                                 <div className="blog-des">
-                                    <h6 className="blog_date font-weight-normal text-muted">
-                                        <span>business</span></h6>
-                                    <h5 className="mt-10 mb-6"><a href="#" className="text-dark">The Most Advance
-                                        Business Plan</a></h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipiscing elit amet
-                                        consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum
-                                        dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet
-                                        consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam
-                                        tincidunt orci lacus id varius dolor fermum sit amet.</p>
-                                    <p >Lorem ipsum dolor sit amet consectetur ipiscing elit amet
-                                        consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum
-                                        dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet
-                                        consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam
-                                        tincidunt orci lacus id varius dolor fermum sit amet.</p>
+                                    <h5 className="mt-10 mb-6">{post.postTitle}</h5>
+                                    <p>{post.description}</p>
                                 </div>
                             </div>
-                            <div className="comments-area mt-50">
+                           {/* <div className="comments-area mt-50">
                                 <div className="blog-single-title">
                                     <h4>Read Comments</h4>
                                 </div>
@@ -102,7 +109,7 @@ export default class PostSingle extends React.Component{
                                         </button>
                                     </form>
                                 </div>
-                            </div>
+                            </div>*/}
                         </div>
                         <Aside/>
                     </div>
@@ -111,3 +118,4 @@ export default class PostSingle extends React.Component{
         )
     }
 }
+export default withRouter(PostSingle);

@@ -1,29 +1,39 @@
 import React from "react";
 import axios from "axios";
+import {withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-export default class Tags extends React.Component{
+ class Tags extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            PostTag:[],
-            Post:[],
-            Tag:[]
+            category:{},
+            post:[],
+
         }
     }
     componentDidMount() {
         const catName = this.props.match.params.catName;
         axios.get('https://localhost:44361/api/Categories/'+ catName)
             .then(rs=>{
-                const data = rs.data.data;
+                const data = rs.data;
                 this.setState({
-                    PostTag:data.PostTag,
-                    Post:data
+                    category:data.catName
                 })
             })
+
+        axios.get('https://localhost:44361/api/Posts')
+            .then(rs=>{
+                const data = rs.catName;
+                this.setState({
+                    post:data
+                })
+            })
+
     }
     render() {
-        const tag =this.state.PostTag;
-        const post = this.state.Post;
+        const tag =this.state.category;
+        const post = this.state.post;
         return(
             <div className="col-lg-8">
                 <h2>{tag.name}</h2>
@@ -36,9 +46,8 @@ export default class Tags extends React.Component{
                                         <div className="blog_img mb-20"><img src={e.img}/></div>
                                         <div className="blog-des">
                                             <h5 className="mt-10 mb-6"><a href="#" className="text-dark">{e.title}</a></h5>
-                                            <p className="text-muted"></p>
                                             <div className="read_more">
-                                                <a href="#" className="text-dark text-uppercase"> Read More</a> </div>
+                                                <Link to={"/post-single/" + e.postId} className="text-dark text-uppercase"> Read More</Link> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -50,3 +59,4 @@ export default class Tags extends React.Component{
         )
     }
 }
+export default withRouter(Tags);

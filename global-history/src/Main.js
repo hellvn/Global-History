@@ -1,11 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {Switch,Route} from "react-router-dom";
-import {BrowserRouter} from "react-router-dom";
 import Post from "./Component/Post";
 import Aside from "./layout/aside";
 import Tags from "./Component/Tags";
-import Header from "./Component/Header";
 import Register from "./Component/Register";
 import SignIn from "./Component/SignIn";
 import PostSingle from "./Component/PostSingle";
@@ -30,7 +27,7 @@ export default class Main extends React.Component{
                         <Route path="/login" exact>
                             <SignIn/>
                         </Route>
-                        <Route path="/post-single" exact>
+                        <Route path="/post-single/:postId" exact>
                             <PostSingle/>
                         </Route>
                     </div>

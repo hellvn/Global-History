@@ -9,12 +9,12 @@ namespace GlobalHistory_API2.Models
     {
         public Category()
         {
-            Posts = new HashSet<Post>();
+            PostCats = new HashSet<PostCat>();
         }
 
         public string CatName { get; set; }
         public byte[] CreatedAt { get; set; }
 
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<PostCat> PostCats { get; set; }
     }
 }

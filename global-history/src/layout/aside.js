@@ -23,7 +23,7 @@ export default class Aside extends React.Component{
             <div className="col-lg-4">
                 <aside>
                     <div className="widget mb-50">
-                        <h3>Tags</h3>
+                        <h3>Category</h3>
                         <ul className="blog-categorie">
                             {
                                 tag.map((e,k)=>{

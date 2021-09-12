@@ -29,10 +29,9 @@ export default class Post extends React.Component{
                                     <div className="blog-box shadow">
                                         <div className="blog_img mb-20"><img src={e.postImage}/></div>
                                         <div className="blog-des">
-                                            <h5 className="mt-10 mb-6"><a href="#" className="text-dark">{e.postTitle}</a></h5>
-                                            <p className="text-muted"></p>
+                                            <h5 className="mt-10 mb-6"><Link to={"/post-single/" + e.postId} className="text-dark">{e.postTitle}</Link></h5>
                                             <div className="read_more">
-                                                <Link to="/post-single" className="text-dark text-uppercase"> Read More</Link>
+                                                <Link to={"/post-single/" + e.postId} className="text-dark text-uppercase"> Read More</Link>
                                             </div>
                                         </div>
                                     </div>

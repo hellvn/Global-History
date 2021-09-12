@@ -10,6 +10,7 @@ namespace GlobalHistory_API2.Models
         public Post()
         {
             Comments = new HashSet<Comment>();
+            PostCats = new HashSet<PostCat>();
             PostTags = new HashSet<PostTag>();
         }
 
@@ -17,14 +18,13 @@ namespace GlobalHistory_API2.Models
         public int UserId { get; set; }
         public string PostTitle { get; set; }
         public string PostImage { get; set; }
-        public string CatName { get; set; }
         public bool? PostPublished { get; set; }
         public string Description { get; set; }
         public byte[] CreatedAt { get; set; }
 
-        public virtual Category CatNameNavigation { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<PostCat> PostCats { get; set; }
         public virtual ICollection<PostTag> PostTags { get; set; }
     }
 }

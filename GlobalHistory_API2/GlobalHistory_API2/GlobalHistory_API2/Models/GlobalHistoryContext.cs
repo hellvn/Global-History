@@ -8,7 +8,7 @@ namespace GlobalHistory_API2.Models
 {
     public partial class GlobalHistoryContext : DbContext
     {
-       /* public GlobalHistoryContext() 
+      /*  public GlobalHistoryContext()
         {
         }
 */
@@ -20,11 +20,12 @@ namespace GlobalHistory_API2.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<PostCat> PostCats { get; set; }
         public virtual DbSet<PostTag> PostTags { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-      /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+     /*   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
@@ -91,10 +92,6 @@ namespace GlobalHistory_API2.Models
 
                 entity.Property(e => e.PostId).HasColumnName("post_id");
 
-                entity.Property(e => e.CatName)
-                    .HasMaxLength(50)
-                    .HasColumnName("cat_name");
-
                 entity.Property(e => e.CreatedAt)
                     .IsRequired()
                     .IsRowVersion()
@@ -120,16 +117,36 @@ namespace GlobalHistory_API2.Models
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
-                entity.HasOne(d => d.CatNameNavigation)
-                    .WithMany(p => p.Posts)
-                    .HasForeignKey(d => d.CatName)
-                    .HasConstraintName("FK_category");
-
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_post_users");
+            });
+
+            modelBuilder.Entity<PostCat>(entity =>
+            {
+                entity.HasKey(e => new { e.PostId, e.CatName });
+
+                entity.ToTable("post_cat");
+
+                entity.Property(e => e.PostId).HasColumnName("post_id");
+
+                entity.Property(e => e.CatName)
+                    .HasMaxLength(50)
+                    .HasColumnName("cat_name");
+
+                entity.HasOne(d => d.CatNameNavigation)
+                    .WithMany(p => p.PostCats)
+                    .HasForeignKey(d => d.CatName)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_cat_post");
+
+                entity.HasOne(d => d.Post)
+                    .WithMany(p => p.PostCats)
+                    .HasForeignKey(d => d.PostId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_post_cat");
             });
 
             modelBuilder.Entity<PostTag>(entity =>
