@@ -1,24 +1,31 @@
 import React from "react";
 import axios from "axios";
+import {baseURL} from "../baseURL";
 import {Link} from "react-router-dom";
 
 export default class Aside extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            tags:[]
+            category:[],
+            posts:[]
         }
     }
     componentDidMount(){
-        axios.get("https://localhost:44361/api/Categories")
+        axios.get(baseURL.category.url)
             .then(rs=>{
                 this.setState({
-                    tags:rs.data
+                    category:rs.data
                 })
             })
+        axios.get(baseURL.posts.url).then(rs=>{
+            this.setState({
+                posts:rs.data
+            })
+        })
     }
     render() {
-        const tag = this.state.tags;
+        const tag = this.state.category;
         return(
             <div className="col-lg-4">
                 <aside>

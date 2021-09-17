@@ -47,6 +47,7 @@ export default class Header extends React.Component{
                                                     }
                                                 </div>
                                             </li>
+                                            <li><Link className="nav-link" to="/manage_category">Manage Category</Link></li>
                                         </ul>
                                     </div>
                                 </nav>
