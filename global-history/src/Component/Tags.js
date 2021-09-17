@@ -3,39 +3,32 @@ import axios from "axios";
 import {withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
 import {baseURL} from "../baseURL";
-import Aside from "../layout/aside";
+
 
  class Tags extends React.Component{
      constructor(props) {
          super(props);
          this.state = {
-             Post:[],
              category:[],
-             postCat:[]
+             Post:[],
+         }
+     }
+     componentDidUpdate(prevProps){
+         if(prevProps.changedProp !== this.props.changedProp){
+             this.setState({
+                 changedProp: this.props.changedProp
+             });
          }
      }
      componentDidMount(){
-         // const catName = this.props.match.params.catName;
-         axios.get(baseURL.posts.url)
-             .then(rs=>{
-                 this.setState({
-                     Post:rs.data
-                 })
-             })
-         axios.get(baseURL.postCat.url).then(rs=>{
-             this.setState({
-                 postCat:rs.data
-             })
+         const id = this.props.match.params.id;
+         axios.get(baseURL.category.url + id).then(rs=>{
+            const data = rs.data;
+            this.setState({
+                category:data.category,
+                Post:data.posts
+            })
          })
-     }
-     Compare(){
-         // const posts = this.state.Post;
-         const postCat = this.state.postCat;
-         const catName = this.props.match.params.catName
-         if (catName === postCat.catName){
-            this.state.Post.postId = postCat.postId;
-             return this.state.Post;
-         }
      }
      render() {
          const posts = this.state.Post;

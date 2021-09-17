@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {baseURL} from "../baseURL";
 
 export default class Post extends React.Component{
     constructor(props) {
@@ -10,7 +11,7 @@ export default class Post extends React.Component{
         }
     }
     componentDidMount(){
-        axios.get("https://localhost:44361/api/Posts")
+        axios.get(baseURL.posts.url)
             .then(rs=>{
                 this.setState({
                     Post:rs.data

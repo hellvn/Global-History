@@ -24,15 +24,18 @@ namespace GlobalHistory_API2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories.Include(c => c.Posts).ToListAsync();
         }
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(string id)
+        public async Task<ActionResult<Category>> GetCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
+               var category = await _context.Categories
+                .Where(c => c.CatId == id)
+                .Include(c=>c.Posts).ThenInclude(p => p.Comments)
+                .Include(c=>c.Posts).ThenInclude(p => p.User)
+                .FirstOrDefaultAsync();
             if (category == null)
             {
                 return NotFound();
@@ -44,9 +47,9 @@ namespace GlobalHistory_API2.Controllers
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(string id, Category category)
+        public async Task<IActionResult> PutCategory(int id, Category category)
         {
-            if (id != category.CatName)
+            if (id != category.CatId)
             {
                 return BadRequest();
             }
@@ -78,28 +81,14 @@ namespace GlobalHistory_API2.Controllers
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
             _context.Categories.Add(category);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (CategoryExists(category.CatName))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.CatName }, category);
+            return CreatedAtAction("GetCategory", new { id = category.CatId }, category);
         }
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(string id)
+        public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
@@ -113,9 +102,9 @@ namespace GlobalHistory_API2.Controllers
             return NoContent();
         }
 
-        private bool CategoryExists(string id)
+        private bool CategoryExists(int id)
         {
-            return _context.Categories.Any(e => e.CatName == id);
+            return _context.Categories.Any(e => e.CatId == id);
         }
     }
 }

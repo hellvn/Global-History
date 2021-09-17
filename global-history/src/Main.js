@@ -22,7 +22,7 @@ export default class Main extends React.Component{
                                 <Post/>
                                 <Aside/>
                         </Route>
-                        <Route path="/Category/:catName" exact>
+                        <Route path="/Category/:id" exact>
                                 <Tags/>
                                 <Aside/>
                         </Route>

@@ -2,6 +2,7 @@ import React from "react";
 import Aside from "../layout/aside";
 import axios from "axios";
 import {withRouter} from "react-router-dom";
+import {baseURL} from "../baseURL";
 
 class PostSingle extends React.Component{
     constructor(props) {
@@ -12,7 +13,7 @@ class PostSingle extends React.Component{
     }
     componentDidMount() {
         const id =this.props.match.params.postId;
-        axios.get("https://localhost:44361/api/Posts/" + id)
+        axios.get(baseURL.posts.url + id)
             .then(rs=>{
                 const data = rs.data;
                 this.setState({
@@ -34,7 +35,7 @@ class PostSingle extends React.Component{
                                     <p>{post.description}</p>
                                 </div>
                             </div>
-                           {/* <div className="comments-area mt-50">
+                            <div className="comments-area mt-50">
                                 <div className="blog-single-title">
                                     <h4>Read Comments</h4>
                                 </div>
@@ -109,7 +110,7 @@ class PostSingle extends React.Component{
                                         </button>
                                     </form>
                                 </div>
-                            </div>*/}
+                            </div>
                         </div>
                         <Aside/>
                     </div>

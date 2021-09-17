@@ -267,4 +267,7 @@ D:\SEM3\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\
 D:\SEM3\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\obj\Debug\net5.0\ref\GlobalHistory_API2.dll
 D:\SEM3\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\obj\Debug\net5.0\GlobalHistory_API2.pdb
 D:\SEM3\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\obj\Debug\net5.0\GlobalHistory_API2.genruntimeconfig.cache
+D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\obj\Debug\net5.0\GlobalHistory_API2.csproj.AssemblyReference.cache

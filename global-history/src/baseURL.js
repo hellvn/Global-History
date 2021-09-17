@@ -1,12 +1,12 @@
 const base_url = "https://localhost:44361"
 export const baseURL = {
     category:{
-        url: base_url + "/api/Categories",
+        url: base_url + "/api/Categories/",
         params:{},
         method:"GET"
     },
     add_category:{
-        url: base_url + "/api/Categories",
+        url: base_url + "/api/Categories/",
         params:JSON.stringify({
                 catName:""
         }),

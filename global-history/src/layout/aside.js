@@ -25,7 +25,7 @@ export default class Aside extends React.Component{
         })
     }
     render() {
-        const tag = this.state.category;
+        const tags = this.state.category;
         return(
             <div className="col-lg-4">
                 <aside>
@@ -33,10 +33,10 @@ export default class Aside extends React.Component{
                         <h3>Category</h3>
                         <ul className="blog-categorie">
                             {
-                                tag.map((e,k)=>{
+                                tags.map((tag,k)=>{
                                     return (
                                         <li key={k}>
-                                            <Link to={"/category/"+ e.catName}>{e.catName}</Link>
+                                            <Link to={"/category/"+ tag.catId}>{tag.catName}</Link>
                                         </li>
                                     )
                                 })

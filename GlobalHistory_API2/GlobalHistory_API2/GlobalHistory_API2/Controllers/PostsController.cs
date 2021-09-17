@@ -24,7 +24,7 @@ namespace GlobalHistory_API2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
-            return await _context.Posts.ToListAsync();
+            return await _context.Posts.Include(p => p.User).ToListAsync();
         }
 
         // GET: api/Posts/5

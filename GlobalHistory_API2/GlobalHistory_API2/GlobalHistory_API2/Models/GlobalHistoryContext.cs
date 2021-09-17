@@ -20,31 +20,33 @@ namespace GlobalHistory_API2.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-        public virtual DbSet<PostCat> PostCats { get; set; }
         public virtual DbSet<PostTag> PostTags { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-      /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-M7UHRSN\\SQLEXPRESS;Initial Catalog=GlobalHistory;Integrated Security=True ");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-M7UHRSN\\SQLEXPRESS;Initial Catalog=GlobalHistory;Integrated Security=True");
             }
-        }
-*/
+        }*/
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasKey(e => e.CatName);
+                entity.HasKey(e => e.CatId);
 
                 entity.ToTable("category");
 
+                entity.Property(e => e.CatId).HasColumnName("cat_id");
+
                 entity.Property(e => e.CatName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("cat_name");
 
@@ -92,6 +94,8 @@ namespace GlobalHistory_API2.Models
 
                 entity.Property(e => e.PostId).HasColumnName("post_id");
 
+                entity.Property(e => e.CatId).HasColumnName("cat_id");
+
                 entity.Property(e => e.CreatedAt)
                     .IsRequired()
                     .IsRowVersion()
@@ -117,36 +121,16 @@ namespace GlobalHistory_API2.Models
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
+                entity.HasOne(d => d.Cat)
+                    .WithMany(p => p.Posts)
+                    .HasForeignKey(d => d.CatId)
+                    .HasConstraintName("FK_postcat");
+
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_post_users");
-            });
-
-            modelBuilder.Entity<PostCat>(entity =>
-            {
-                entity.HasKey(e => new { e.PostId, e.CatName });
-
-                entity.ToTable("post_cat");
-
-                entity.Property(e => e.PostId).HasColumnName("post_id");
-
-                entity.Property(e => e.CatName)
-                    .HasMaxLength(50)
-                    .HasColumnName("cat_name");
-
-                entity.HasOne(d => d.CatNameNavigation)
-                    .WithMany(p => p.PostCats)
-                    .HasForeignKey(d => d.CatName)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_cat_post");
-
-                entity.HasOne(d => d.Post)
-                    .WithMany(p => p.PostCats)
-                    .HasForeignKey(d => d.PostId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_post_cat");
             });
 
             modelBuilder.Entity<PostTag>(entity =>

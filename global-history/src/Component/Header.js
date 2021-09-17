@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {baseURL} from "../baseURL";
 
 export default class Header extends React.Component{
     constructor(props) {
@@ -10,7 +11,7 @@ export default class Header extends React.Component{
         }
     }
     componentDidMount(){
-        axios.get("https://localhost:44361/api/Categories")
+        axios.get(baseURL.category.url)
             .then(rs=>{
                 this.setState({
                     tags:rs.data
@@ -18,7 +19,7 @@ export default class Header extends React.Component{
             })
     }
     render() {
-        const tag = this.state.tags;
+        const tags = this.state.tags;
         return(
             <header className="header">
                 <div className="header-upper-bar">
@@ -36,15 +37,17 @@ export default class Header extends React.Component{
                                                                                  aria-haspopup="true"
                                                                                  aria-expanded="false">Categories</Link>
                                                 <div className="dropdown-menu" aria-labelledby="dropdown02">
+                                                    <ul>
                                                     {
-                                                        tag.map((e,k)=>{
+                                                        tags.map((tag,k)=>{
                                                             return (
                                                                 <li key={k}>
-                                                                    <Link to={"/category/"+ e.catName}>{e.catName}</Link>
+                                                                    <Link to={"/category/"+ tag.catId}>{tag.catName}</Link>
                                                                 </li>
-                                                            )
+                                                                )
                                                         })
                                                     }
+                                                    </ul>
                                                 </div>
                                             </li>
                                             <li><Link className="nav-link" to="/manage_category">Manage Category</Link></li>
