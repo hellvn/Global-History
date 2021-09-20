@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import {baseURL} from "../baseURL";
 import {Link} from "react-router-dom";
+import {Redirect} from 'react-router-dom';
 
 export default class Aside extends React.Component{
     constructor(props) {
@@ -18,11 +19,6 @@ export default class Aside extends React.Component{
                     category:rs.data
                 })
             })
-        axios.get(baseURL.posts.url).then(rs=>{
-            this.setState({
-                posts:rs.data
-            })
-        })
     }
     render() {
         const tags = this.state.category;

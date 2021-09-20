@@ -27,12 +27,11 @@ export default class SignIn extends React.Component{
             password: this.state.password
         })
     }
-    handleEmailChange(e){
-        this.setState({email:e.target.value})
-    }
-    handlePasswordChange(e){
-        this.setState({password:e.target.value})
-    }
+   handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+   }
 render() {
         return(
             <div className="container">

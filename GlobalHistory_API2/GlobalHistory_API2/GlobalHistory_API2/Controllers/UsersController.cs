@@ -24,14 +24,17 @@ namespace GlobalHistory_API2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(u => u.Posts).ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Where(u => u.UserId == id)
+                .Include(u => u.Posts).ThenInclude(p =>p.Comments)
+                .FirstOrDefaultAsync();
 
             if (user == null)
             {

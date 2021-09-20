@@ -271,3 +271,4 @@ D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\Gl
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\obj\Debug\net5.0\GlobalHistory_API2.csproj.AssemblyReference.cache
+D:\Ki3\EAP\GlobalHistory\Global-History\GlobalHistory_API2\GlobalHistory_API2\GlobalHistory_API2\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

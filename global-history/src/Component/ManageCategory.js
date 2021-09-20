@@ -57,7 +57,7 @@ export default class ManageCategory extends React.Component{
 {/*
                                         <Link className="btn btn-outline-primary" to={"/edit-category/"+e.catName}>Edit</Link>&nbsp;
 */}
-                                        <button type="button" onClick={this.deleteCategory.bind(this,e.catName)} className="btn btn-outline-danger">Delete</button>
+                                        <button type="button" onClick={this.deleteCategory.bind(this,e.catId)} className="btn btn-outline-danger">Delete</button>
                                     </td>
                                 </tr>
                             )

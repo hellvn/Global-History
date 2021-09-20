@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GlobalHistory_API2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GlobalHistory_API2.Controllers
 {
@@ -74,6 +75,7 @@ namespace GlobalHistory_API2.Controllers
 
         // POST: api/Comments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+       
         [HttpPost]
         public async Task<ActionResult<Comment>> PostComment(Comment comment)
         {
